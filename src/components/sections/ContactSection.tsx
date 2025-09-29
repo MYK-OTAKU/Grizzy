@@ -12,16 +12,19 @@ import {
   Star
 } from 'lucide-react'
 import { RESTAURANT_INFO, ANALYTICS_EVENTS } from '@utils/constants'
+import { useRestaurantStatus } from '@hooks/useRestaurantStatus'
+import { getStatusColor, getStatusIcon } from '@utils/timeUtils'
 import Button from '@components/ui/Button'
 import useScrollReveal from '@hooks/useScrollReveal'
 
 const ContactSection: React.FC = () => {
   const { ref, isVisible } = useScrollReveal()
+  const restaurantStatus = useRestaurantStatus(RESTAURANT_INFO.hours['Tous les jours'])
 
   // Gérer les clics sur les liens de contact
   const handleContactClick = (type: string, value: string) => {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', ANALYTICS_EVENTS.PHONE_CLICK, {
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('event', ANALYTICS_EVENTS.PHONE_CLICK, {
         contact_type: type,
         contact_value: value
       })
@@ -30,8 +33,8 @@ const ContactSection: React.FC = () => {
 
   // Gérer les clics sur les réseaux sociaux
   const handleSocialClick = (platform: string, url: string) => {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', ANALYTICS_EVENTS.SOCIAL_CLICK, {
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('event', ANALYTICS_EVENTS.SOCIAL_CLICK, {
         social_platform: platform,
         social_url: url
       })
@@ -256,10 +259,17 @@ const ContactSection: React.FC = () => {
               </div>
               
               <div className="mt-6 pt-6 border-t border-white/10">
-                <div className="flex items-center text-green-400 text-sm">
-                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-                  Ouvert maintenant
+                <div className={`flex items-center text-sm ${
+                  getStatusColor(restaurantStatus.status)
+                }`}>
+                  <span className="mr-2">{getStatusIcon(restaurantStatus.isOpen)}</span>
+                  {restaurantStatus.message}
                 </div>
+                {restaurantStatus.timeUntilClose && (
+                  <div className="text-xs text-gray-400 mt-1">
+                    Fermeture dans {restaurantStatus.timeUntilClose}
+                  </div>
+                )}
               </div>
             </div>
 
