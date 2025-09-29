@@ -150,7 +150,7 @@ const Header: React.FC = () => {
           <div className="hidden md:block">
             <Button
               variant="primary"
-              href={`https://wa.me/212625525036?text=${encodeURIComponent('🍔 Bonjour GRILL\'Z! J\'aimerais passer une commande. Merci! 🔥')}`}
+              href={`https://wa.me/${RESTAURANT_INFO.contact.whatsapp}?text=${encodeURIComponent('🍔 Bonjour GRILL\'Z! J\'aimerais passer une commande. Merci! 🔥')}`}
               target="_blank"
             >
               Commander
@@ -228,7 +228,7 @@ const Header: React.FC = () => {
                   <Button
                     variant="primary"
                     className="w-full"
-                    href={`https://wa.me/212625525036?text=${encodeURIComponent('🍔 Bonjour GRILL\'Z! J\'aimerais passer une commande. Merci! 🔥')}`}
+                    href={`https://wa.me/${RESTAURANT_INFO.contact.whatsapp}?text=${encodeURIComponent('🍔 Bonjour GRILL\'Z! J\'aimerais passer une commande. Merci! 🔥')}`}
                     target="_blank"
                   >
                     Commander sur WhatsApp

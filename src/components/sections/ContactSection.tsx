@@ -46,8 +46,8 @@ const ContactSection: React.FC = () => {
       primary: `${RESTAURANT_INFO.address.street}`,
       secondary: `${RESTAURANT_INFO.address.city}, ${RESTAURANT_INFO.address.postalCode}`,
       action: () => {
-        const address = encodeURIComponent(`${RESTAURANT_INFO.address.street}, ${RESTAURANT_INFO.address.city}`)
-        window.open(`https://maps.google.com/search/${address}`, '_blank')
+        const address = encodeURIComponent(`${RESTAURANT_INFO.address.street}, ${RESTAURANT_INFO.address.city}, ${RESTAURANT_INFO.address.country}`)
+        window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank')
         handleContactClick('address', address)
       },
       buttonText: 'Voir sur Maps',
@@ -72,7 +72,7 @@ const ContactSection: React.FC = () => {
       secondary: 'Commandes et réservations',
       action: () => {
         const message = encodeURIComponent('🍔 Bonjour GRILL\'Z! J\'aimerais avoir des informations. Merci! 🔥')
-        const whatsappUrl = `https://wa.me/${RESTAURANT_INFO.contact.whatsapp.replace(/[\s\-\(\)]/g, '')}?text=${message}`
+        const whatsappUrl = `https://wa.me/${RESTAURANT_INFO.contact.whatsapp}?text=${message}`
         window.open(whatsappUrl, '_blank')
         handleContactClick('whatsapp', RESTAURANT_INFO.contact.whatsapp)
       },
@@ -329,7 +329,7 @@ const ContactSection: React.FC = () => {
             <Button
               variant="whatsapp"
               size="lg"
-              href={`https://wa.me/${RESTAURANT_INFO.contact.whatsapp.replace(/[\s\-\(\)]/g, '')}?text=${encodeURIComponent('🍔 Bonjour GRILL\'Z! Je souhaite passer commande. Merci! 🔥')}`}
+              href={`https://wa.me/${RESTAURANT_INFO.contact.whatsapp}?text=${encodeURIComponent('🍔 Bonjour GRILL\'Z! Je souhaite passer commande. Merci! 🔥')}`}
               target="_blank"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
@@ -340,8 +340,8 @@ const ContactSection: React.FC = () => {
               variant="secondary"
               size="lg"
               onClick={() => {
-                const address = encodeURIComponent(`${RESTAURANT_INFO.address.street}, ${RESTAURANT_INFO.address.city}`)
-                window.open(`https://maps.google.com/search/${address}`, '_blank')
+                const address = encodeURIComponent(`${RESTAURANT_INFO.address.street}, ${RESTAURANT_INFO.address.city}, ${RESTAURANT_INFO.address.country}`)
+                window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank')
               }}
             >
               <Navigation className="w-5 h-5 mr-2" />

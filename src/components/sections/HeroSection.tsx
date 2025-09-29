@@ -259,7 +259,7 @@ const HeroSection: React.FC = () => {
           <Button
             variant="whatsapp"
             size="lg"
-            href={`https://wa.me/${RESTAURANT_INFO.contact.whatsapp.replace(/[\s\-\(\)]/g, '')}?text=${encodeURIComponent('🍔 Bonjour GRILL\'Z! J\'aimerais découvrir vos spécialités. Merci! 🔥')}`}
+            href={`https://wa.me/${RESTAURANT_INFO.contact.whatsapp}?text=${encodeURIComponent('🍔 Bonjour GRILL\'Z! J\'aimerais découvrir vos spécialités. Merci! 🔥')}`}
             target="_blank"
             className="min-w-[200px]"
           >

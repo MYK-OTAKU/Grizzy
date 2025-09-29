@@ -34,7 +34,7 @@ export const RESTAURANT_INFO: RestaurantInfo = {
   },
   contact: {
     phone: '05 21 12 57 57',
-    whatsapp: '06 25 52 50 36',
+    whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER || '212625525036',
     email: 'contact@grillzburger.ma'
   },
   hours: {
@@ -79,7 +79,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 // Constantes pour WhatsApp
 export const WHATSAPP_CONFIG = {
   baseUrl: 'https://wa.me/',
-  number: '212625525036', // 06 25 52 50 36 en format international
+  number: import.meta.env.VITE_WHATSAPP_NUMBER || '212625525036', // Utilise la variable d'environnement
   businessName: SITE_CONFIG.whatsapp.businessName
 }
 

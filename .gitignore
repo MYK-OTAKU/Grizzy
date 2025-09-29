@@ -98,6 +98,6 @@ jspm_packages/
 
 # Vercel
 .vercel
-
+.replit
 # Netlify
 .netlify
