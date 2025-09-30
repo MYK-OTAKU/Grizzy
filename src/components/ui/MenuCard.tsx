@@ -21,8 +21,8 @@ const MenuCard: React.FC<MenuCardProps> = ({
   // Gérer la commande via WhatsApp
   const handleOrder = () => {
     // Analytics tracking
-    if (typeof gtag !== 'undefined') {
-      gtag('event', ANALYTICS_EVENTS.BURGER_VIEW, {
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('event', ANALYTICS_EVENTS.BURGER_VIEW, {
         burger_name: burger.name,
         burger_id: burger.id,
         burger_price: burger.price,
@@ -39,8 +39,8 @@ const MenuCard: React.FC<MenuCardProps> = ({
 
   // Gérer le hover pour analytics
   const handleHover = () => {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', ANALYTICS_EVENTS.BURGER_HOVER, {
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('event', ANALYTICS_EVENTS.BURGER_HOVER, {
         burger_name: burger.name,
         burger_id: burger.id
       })

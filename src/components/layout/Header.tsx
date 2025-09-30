@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Flame } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { NAVIGATION_ITEMS, RESTAURANT_INFO } from '@utils/constants'
 import Button from '@components/ui/Button'
 
@@ -54,18 +54,6 @@ const Header: React.FC = () => {
     hover: { 
       scale: 1.05,
       transition: { type: "spring", stiffness: 400 }
-    }
-  }
-
-  const flameVariants = {
-    initial: { rotate: 0 },
-    animate: { 
-      rotate: [0, 5, -5, 0],
-      transition: { 
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
     }
   }
 

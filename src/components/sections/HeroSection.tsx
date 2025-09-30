@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Flame, Star } from 'lucide-react'
+import { ChevronDown, Flame } from 'lucide-react'
 import { RESTAURANT_INFO } from '@utils/constants'
 import Button from '@components/ui/Button'
 import useScrollReveal from '@hooks/useScrollReveal'

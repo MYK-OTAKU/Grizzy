@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Camera, Users, Utensils, Eye } from 'lucide-react'
 import { galleryItems, getFoodGallery, getAmbianceGallery, getTeamGallery, getFeaturedGallery } from '@data/gallery'
-import { GalleryItem } from '@/types'
 import { ANALYTICS_EVENTS } from '@utils/constants'
 import Carousel from '@components/ui/Carousel'
 import useScrollReveal from '@hooks/useScrollReveal'
@@ -51,8 +50,8 @@ const GallerySection: React.FC = () => {
     setActiveCategory(categoryId)
     
     // Analytics tracking
-    if (typeof gtag !== 'undefined') {
-      gtag('event', ANALYTICS_EVENTS.GALLERY_IMAGE_VIEW, {
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('event', ANALYTICS_EVENTS.GALLERY_IMAGE_VIEW, {
         category: categoryId,
         action: 'category_change'
       })

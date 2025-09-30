@@ -58,8 +58,8 @@ const useWhatsApp = (): UseWhatsAppReturn => {
       }
 
       // Analytics tracking
-      if (typeof gtag !== 'undefined') {
-        gtag('event', ANALYTICS_EVENTS.WHATSAPP_CLICK, {
+      if (typeof window !== 'undefined' && 'gtag' in window) {
+        (window as any).gtag('event', ANALYTICS_EVENTS.WHATSAPP_CLICK, {
           burger_name: burger.name,
           burger_id: burger.id,
           burger_price: burger.price,
@@ -67,7 +67,7 @@ const useWhatsApp = (): UseWhatsAppReturn => {
           moroccan_fusion: burger.moroccanFusion
         })
         
-        gtag('event', ANALYTICS_EVENTS.ORDER_ATTEMPT, {
+        (window as any).gtag('event', ANALYTICS_EVENTS.ORDER_ATTEMPT, {
           currency: 'MAD',
           value: burger.price,
           items: [{
@@ -100,8 +100,8 @@ const useWhatsApp = (): UseWhatsAppReturn => {
       console.error('Erreur lors de l\'envoi de la commande WhatsApp:', error)
       
       // Analytics tracking de l'erreur
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'exception', {
+      if (typeof window !== 'undefined' && 'gtag' in window) {
+        (window as any).gtag('event', 'exception', {
           description: 'WhatsApp order failed',
           fatal: false
         })

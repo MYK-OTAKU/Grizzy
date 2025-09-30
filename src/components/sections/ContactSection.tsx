@@ -8,7 +8,6 @@ import {
   Facebook, 
   MessageCircle,
   Navigation,
-  Mail,
   Star
 } from 'lucide-react'
 import { RESTAURANT_INFO, ANALYTICS_EVENTS } from '@utils/constants'

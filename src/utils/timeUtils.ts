@@ -98,8 +98,6 @@ export const getRestaurantStatus = (hoursString: string): OpeningStatus => {
     }
     // Currently closed (between close and open)
     else {
-      const minutesUntilOpen = openMinutes - currentMinutes
-      
       return {
         isOpen: false,
         status: 'closed',
@@ -123,16 +121,13 @@ export const getRestaurantStatus = (hoursString: string): OpeningStatus => {
       }
     } else {
       // Closed
-      let nextOpenMinutes: number
       let message: string
       
       if (currentMinutes < openMinutes) {
         // Same day opening
-        nextOpenMinutes = openMinutes - currentMinutes
         message = `Fermé - Ouvre à ${minutesToTime(openMinutes)}`
       } else {
         // Next day opening
-        nextOpenMinutes = (24 * 60) - currentMinutes + openMinutes
         message = `Fermé - Ouvre demain à ${minutesToTime(openMinutes)}`
       }
       

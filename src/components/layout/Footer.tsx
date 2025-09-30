@@ -1,7 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { 
-  Flame, 
   MapPin, 
   Phone, 
   MessageCircle, 
@@ -10,7 +9,7 @@ import {
   Heart,
   ArrowUp
 } from 'lucide-react'
-import { RESTAURANT_INFO, SITE_CONFIG } from '@utils/constants'
+import { RESTAURANT_INFO } from '@utils/constants'
 
 const Footer: React.FC = () => {
   

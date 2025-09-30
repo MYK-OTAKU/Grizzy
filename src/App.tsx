@@ -22,16 +22,16 @@ const App: React.FC = () => {
     // Initialiser GA4 si l'ID est configuré
     const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID
     
-    if (GA_ID && typeof gtag !== 'undefined') {
-      gtag('config', GA_ID, {
+    if (GA_ID && typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('config', GA_ID, {
         page_title: 'GRILL\'Z - L\'Art du Burger Fusion Marocaine',
         page_location: window.location.href
       })
     }
 
     // Événement de chargement de page pour analytics
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'page_view', {
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('event', 'page_view', {
         page_title: 'GRILL\'Z Homepage',
         page_location: window.location.href,
         page_path: '/'
